@@ -25,6 +25,9 @@
 #elif TD_CYGWIN
   #define TD_POLL_SELECT 1
   #define TD_EVENTFD_BSD 1
+#elif TD_ILLUMOS
+  #define TD_POLL_POLL 1
+  #define TD_EVENTFD_UNSUPPORTED 1
 #elif TD_EMSCRIPTEN
   #define TD_POLL_POLL 1
   #define TD_EVENTFD_UNSUPPORTED 1
