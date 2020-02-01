@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
 
 project(TDLib VERSION 1.6.0 LANGUAGES CXX C)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/illumos.cmake)
+
 if (NOT DEFINED CMAKE_INSTALL_LIBDIR)
   set(CMAKE_INSTALL_LIBDIR "lib")
 endif()
@@ -47,6 +49,11 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" "${CMAKE_MODULE_PATH}"
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+if (ILLUMOS)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lnsl -lsocket")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lnsl -lsocket")
+endif()
 
 enable_testing()
 
