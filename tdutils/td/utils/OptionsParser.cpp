@@ -64,7 +64,7 @@ Result<int> OptionsParser::run(int argc, char *argv[]) {
     o.flag = nullptr;
     o.val = opt.short_key;
     o.has_arg = opt.type == Option::Type::Arg ? required_argument : no_argument;
-    o.name = opt.long_key.c_str();
+    o.name = (char *)opt.long_key.c_str();
     long_options.push_back(o);
   }
   long_options.push_back({nullptr, 0, nullptr, 0});
